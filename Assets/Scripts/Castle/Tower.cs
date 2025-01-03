@@ -15,6 +15,7 @@ public class Tower : MonoBehaviour
 
     float attackSpeed;
     float timeBetweenShots;
+    bool canShoot = true;
 
 
     private void Awake()
@@ -25,11 +26,20 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        timeBetweenShots += Time.deltaTime;
-        if (enemyList.Count > 0 && timeBetweenShots >= attackSpeed)
+        if (timeBetweenShots >= attackSpeed && canShoot == false)
+        {
+            canShoot = true;
+            timeBetweenShots = 0;
+        }
+        else
+        {
+            timeBetweenShots += Time.deltaTime;
+        }
+
+        if (enemyList.Count > 0 && canShoot)
         {
             Shoot(enemyList[Random.Range(0, enemyList.Count)]);
-            timeBetweenShots -= attackSpeed;
+            canShoot = false;
         }
     }
 

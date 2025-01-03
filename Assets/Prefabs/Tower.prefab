@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRadius: 5
-  attacksPerSecond: 5
+  attacksPerSecond: 0.5
   arrowProjectile: {fileID: 6409968488606100001, guid: 4e68f4e85dba2c14984b77bc9c64d1fd, type: 3}
   arrowSpeed: 50
   arrowDamage: 10
