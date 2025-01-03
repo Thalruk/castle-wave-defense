@@ -37,8 +37,8 @@ public class Castle : MonoBehaviour
             float x = Mathf.Cos(angle) * castleRadius;
             float z = Mathf.Sin(angle) * castleRadius;
 
-            GameObject tower = Instantiate(towerPrefab, new Vector3(x, 0, z), Quaternion.LookRotation(Vector3.Cross((new Vector3(x, 0, z) - transform.position).normalized, Vector3.down)), transform);
-            tower.name += $" {i}";
+            GameObject tower = Instantiate(towerPrefab, new Vector3(x, 0, z), Quaternion.LookRotation((new Vector3(x, 0, z) - transform.position).normalized), transform);
+            tower.name += $" {i + 1}";
             angle += nextAngle;
         }
     }
@@ -55,9 +55,9 @@ public class Castle : MonoBehaviour
 
                 float distance = Vector3.Distance(transform.GetChild(i).transform.position, transform.GetChild((i + 1) % towerAmount).transform.position);
 
-                GameObject wall = Instantiate(wallPrefab, new Vector3(wallX, 0, wallZ), Quaternion.LookRotation(Vector3.Cross((transform.position - new Vector3(wallX, 0, wallZ)).normalized, Vector3.down)));
-                wall.name += $" {i}-{(i + 1) % towerAmount}";
-                wall.transform.localScale += new Vector3(0, 0, distance);
+                GameObject wall = Instantiate(wallPrefab, new Vector3(wallX, 0, wallZ), Quaternion.LookRotation((new Vector3(wallX, 0, wallZ) - transform.position).normalized));
+                wall.name += $" {i + 1}-{(i + 2) % (towerAmount + 1)}";
+                wall.transform.localScale += new Vector3(distance, 0, 0);
             }
         }
     }

@@ -393,7 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0e0f085d9d60d40aabff5c6fc83520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  towerAmount: 4
+  towerPrefab: {fileID: 7733637462978249793, guid: 888146986c4c6ab4a8f2f6998135f3df, type: 3}
+  castleRadius: 25
+  wallPrefab: {fileID: 7929726664125418273, guid: 18f690d41a14200419731117ce8f6af9, type: 3}
 --- !u!4 &996484898
 Transform:
   m_ObjectHideFlags: 0
