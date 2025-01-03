@@ -40,7 +40,28 @@ public class Castle : MonoBehaviour
     private void SetUpTowers()
     {
         float nextAngle = 2 * Mathf.PI / towerAmount;
-        float angle = 0;
+        float angle;
+
+        if (towerAmount == 4)
+        {
+            angle = Mathf.PI / 4;
+        }
+        else if (towerAmount == 6)
+        {
+            angle = 0;
+        }
+        else if (towerAmount == 8)
+        {
+            angle = Mathf.PI / 8;
+        }
+        else if (towerAmount == 10)
+        {
+            angle = 0;
+        }
+        else
+        {
+            angle = 2 * Mathf.PI / 4;
+        }
 
         for (int i = 0; i < towerAmount; i++)
         {

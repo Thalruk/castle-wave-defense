@@ -6,7 +6,17 @@ public class CameraController : MonoBehaviour
     [SerializeField] float panBorderThickness = 20;
     [SerializeField] float scrollSpeed = 20;
 
+    [Space]
+    [Header("Limit Settings")]
+    [SerializeField] int mapSize;
+    [SerializeField] int minY, maxY;
+
     private void Update()
+    {
+        MoveCamera();
+    }
+
+    private void MoveCamera()
     {
         Vector3 pos = transform.position;
 
@@ -28,6 +38,10 @@ public class CameraController : MonoBehaviour
         }
 
         pos.y -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * 100 * Time.deltaTime;
+
+        pos.x = Mathf.Clamp(pos.x, -mapSize, mapSize);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        pos.z = Mathf.Clamp(pos.z, -mapSize, mapSize);
 
         transform.position = pos;
     }

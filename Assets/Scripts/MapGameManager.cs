@@ -15,8 +15,7 @@ public class MapGameManager : MonoBehaviour
         {
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 Instantiate(enemy, hit.point, Quaternion.identity);
             }
