@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         healthSlider.maxValue = maxHealth;
+        currenthealth = maxHealth;
         controller = GetComponent<CharacterController>();
     }
 

@@ -396,7 +396,7 @@ MonoBehaviour:
   castleRadius: 10
   castleHeart: {fileID: 3840162294877232637, guid: 850d4e9f9e8480f40b80e6c4ed2b6002, type: 3}
   towerHolder: {fileID: 1389940630}
-  towerAmount: 10
+  towerAmount: 3
   towerPrefab: {fileID: 7733637462978249793, guid: 888146986c4c6ab4a8f2f6998135f3df, type: 3}
   wallHolder: {fileID: 2051299084}
   wallPrefab: {fileID: 7929726664125418273, guid: 18f690d41a14200419731117ce8f6af9, type: 3}
