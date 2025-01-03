@@ -20,6 +20,19 @@ public class Tower : MonoBehaviour
         enemyList = new List<Enemy>();
     }
 
+    private void Update()
+    {
+        if (enemyList.Count > 0)
+        {
+
+        }
+    }
+
+    private void Shoot(Enemy enemy)
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
