@@ -46,7 +46,10 @@ public class Tower : MonoBehaviour
     private void Shoot(Enemy enemy)
     {
         Projectile projectile = Instantiate(arrowProjectile, transform.position + Vector3.up * 5, Quaternion.identity).GetComponent<Projectile>();
-        projectile.target = enemy.transform.GetChild(0).GetChild(0);
+        if (projectile.target == Vector3.zero)
+        {
+            projectile.target = enemy.transform.position;
+        }
         projectile.damage = arrowDamage;
         projectile.speed = arrowSpeed;
     }
@@ -64,5 +67,10 @@ public class Tower : MonoBehaviour
         {
             enemyList.Remove(other.GetComponent<Enemy>());
         }
+    }
+
+    public void DeleteEnemy(Enemy enemy)
+    {
+        enemyList.Remove(enemy);
     }
 }

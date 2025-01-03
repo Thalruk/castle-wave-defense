@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
-    CharacterController controller;
+    NavMeshAgent agent;
 
     [SerializeField] int maxHealth;
     [SerializeField] int currenthealth;
@@ -14,11 +15,22 @@ public class Enemy : MonoBehaviour
     {
         healthSlider.maxValue = maxHealth;
         currenthealth = maxHealth;
-        controller = GetComponent<CharacterController>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.SetDestination(CastleHeart.Instance.transform.position);
     }
 
     private void Update()
     {
         healthSlider.value = currenthealth;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currenthealth = Mathf.Clamp(currenthealth - damage, 0, maxHealth);
+        if (currenthealth == 0)
+        {
+            Destroy(gameObject);
+            Castle.Instance.DeleteEnemyInTowers(this);
+        }
     }
 }

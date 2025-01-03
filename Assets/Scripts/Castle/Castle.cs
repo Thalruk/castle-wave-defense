@@ -95,4 +95,13 @@ public class Castle : MonoBehaviour
     {
         Instantiate(castleHeart, transform.position, Quaternion.identity, transform);
     }
+
+
+    public void DeleteEnemyInTowers(Enemy enemy)
+    {
+        foreach (Transform tower in towerHolder)
+        {
+            tower.GetComponent<Tower>().DeleteEnemy(enemy);
+        }
+    }
 }

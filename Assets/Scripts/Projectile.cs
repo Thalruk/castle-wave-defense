@@ -3,9 +3,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] public int damage;
-    [SerializeField] public Transform target;
+    [SerializeField] public Vector3 target;
     [SerializeField] public int speed;
-    [SerializeField] AnimationCurve curve;
 
     private void Awake()
     {
@@ -14,12 +13,25 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        //float newX = Mathf.MoveTowards(transform.position.x, target.position.x, speed * Time.deltaTime);
-        //float newY = curve.Evaluate(1);
-        //float newZ = Mathf.MoveTowards(transform.position.z, target.position.z, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        transform.LookAt(target);
+    }
 
-        //transform.position = new Vector3(newX, newY, newZ);
-        transform.LookAt(target.position);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Enemy>().TakeDamage(damage);
+            Destroy(gameObject);
+            print("en tri");
+        }
+
+        if (other.CompareTag("Ground"))
+        {
+            speed = 0;
+            GetComponent<BoxCollider>().enabled = false;
+            print("ground tri");
+        }
+
     }
 }
